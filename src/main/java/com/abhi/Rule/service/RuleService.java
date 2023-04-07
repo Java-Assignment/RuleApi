@@ -1,8 +1,12 @@
 package com.abhi.Rule.service;
 
-import com.abhi.Rule.dto.FileDetailsDTO;
-import com.abhi.Rule.exception.FileIdNotFoundException;
+import com.abhi.Rule.dto.FileDTO;
+import com.abhi.Rule.exception.InvalidInputException;
+import com.abhi.Rule.exception.NegativeNumberException;
 
 public interface RuleService {
-    FileDetailsDTO addRule(String fileNumber) throws FileIdNotFoundException;
+
+    String CheckForPositivity(FileDTO fileDTO) throws NegativeNumberException;
+
+    String CheckForLetters(FileDTO fileDTO) throws InvalidInputException;
 }

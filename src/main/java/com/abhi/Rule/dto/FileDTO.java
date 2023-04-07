@@ -1,11 +1,13 @@
-package com.abhi.Rule.externalsvc.formularefsvc.dto;
+package com.abhi.Rule.dto;
+
 
 import lombok.Data;
 
+
 @Data
-public class FileDataDTO {
+public class FileDTO {
+
     private  String fileNumber;
-    private  String version;
     private  String alphabet;
     private  int count;
 

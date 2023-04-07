@@ -14,6 +14,7 @@ public class AppExceptionHandler {
         log.error(exception.getMessage());
         return new ResponseEntity<>(exception.getMessage(), HttpStatus.NOT_FOUND);
     }
+
     @ExceptionHandler(value = {InvalidInputException.class})
     public ResponseEntity<String> handleException(InvalidInputException exception) {
         log.error(exception.getMessage());

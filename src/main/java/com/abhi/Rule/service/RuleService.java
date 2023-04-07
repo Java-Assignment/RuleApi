@@ -6,7 +6,7 @@ import com.abhi.Rule.exception.NegativeNumberException;
 
 public interface RuleService {
 
-    String CheckForPositivity(FileDTO fileDTO) throws NegativeNumberException;
+    FileDTO CheckForPositivity(String fileNumber) throws NegativeNumberException;
 
-    String CheckForLetters(FileDTO fileDTO) throws InvalidInputException;
+    FileDTO CheckForLetters(String fileNumber) throws InvalidInputException;
 }

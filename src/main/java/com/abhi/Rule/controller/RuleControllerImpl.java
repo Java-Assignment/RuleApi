@@ -15,14 +15,14 @@ public class RuleControllerImpl implements RuleController{
     private RuleService ruleService;
 
     @Override
-    public ResponseEntity<String> RuleOne(FileDTO fileDTO) throws NegativeNumberException {
-        String message=ruleService.CheckForPositivity(fileDTO);
-        return new ResponseEntity<>(message,HttpStatus.OK);
+    public ResponseEntity<FileDTO> RuleOne(String fileNumber) throws NegativeNumberException {
+        FileDTO fileDTO1=ruleService.CheckForPositivity(fileNumber);
+        return new ResponseEntity<>(fileDTO1,HttpStatus.OK);
     }
 
     @Override
-    public ResponseEntity<String> RuleTwo(FileDTO fileDTO) throws InvalidInputException {
-        String message=ruleService.CheckForLetters(fileDTO);
-        return new ResponseEntity<>(message,HttpStatus.OK);
+    public ResponseEntity<FileDTO> RuleTwo(String fileNumber) throws InvalidInputException {
+        FileDTO fileDTO2=ruleService.CheckForLetters(fileNumber);
+        return new ResponseEntity<>(fileDTO2,HttpStatus.OK);
     }
 }

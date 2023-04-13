@@ -1,42 +1,43 @@
 package com.abhi.Rule.service;
 
-import com.abhi.Rule.dto.FileDTO;
-import com.abhi.Rule.entity.File;
-import com.abhi.Rule.exception.InvalidInputException;
+import com.abhi.Rule.dto.DataDTO;
+import com.abhi.Rule.entity.Formula;
 import com.abhi.Rule.exception.NegativeNumberException;
+import com.abhi.Rule.exception.NegativePerimeterException;
 import com.abhi.Rule.mapper.RuleMapper;
-import com.abhi.Rule.repo.FileRepo;
+import com.abhi.Rule.repo.DataRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class RuleServiceImpl implements RuleService {
     @Autowired
-    private FileRepo fileRepo;
+    private DataRepo dataRepo;
     @Autowired
     private RuleMapper ruleMapper;
 
     @Override
-    public FileDTO CheckForPositivity(String fileNumber) throws NegativeNumberException {
-        File file = fileRepo.findByFileNumber(fileNumber);
-        if (file != null && file.getCount() > 0) {
-            FileDTO fileDTO = ruleMapper.convertFileToFileDTO(file);
-            return fileDTO;
+    public DataDTO CheckForPositivityOfFileNumber(String fileNumber) throws NegativeNumberException {
+        Formula formula = dataRepo.findByFileNumber(fileNumber);
+        int FileNumber = Integer.parseInt(formula.getFileNumber());
+        if (formula != null && FileNumber > 0) {
+            DataDTO dataDTO = ruleMapper.convertFormulaToDataDTO(formula);
+            return dataDTO;
         } else {
             throw new NegativeNumberException("The number is negative");
         }
     }
 
     @Override
-    public FileDTO CheckForLetters(String fileNumber) throws InvalidInputException {
-        boolean result;
-        File file = fileRepo.findByFileNumber(fileNumber);
-        result = file.getAlphabet().chars().allMatch(Character::isLetter);
-        if (file != null && result) {
-            FileDTO fileDTO = ruleMapper.convertFileToFileDTO(file);
-            return fileDTO;
+    public DataDTO CheckForPositivityOfPerimeter(String fileNumber) throws NegativePerimeterException {
+        Formula formula = dataRepo.findByFileNumber(fileNumber);
+        if (formula != null && formula.getPerimeter() > 0) {
+            DataDTO dataDTO = ruleMapper.convertFormulaToDataDTO(formula);
+            return dataDTO;
         } else {
-            throw new InvalidInputException("The alphabet contains input other than alphabets ");
+            throw new NegativePerimeterException("The perimeter is negative");
         }
     }
+
+
 }

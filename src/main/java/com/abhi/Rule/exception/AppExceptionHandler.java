@@ -15,8 +15,8 @@ public class AppExceptionHandler {
         return new ResponseEntity<>(exception.getMessage(), HttpStatus.NOT_FOUND);
     }
 
-    @ExceptionHandler(value = {InvalidInputException.class})
-    public ResponseEntity<String> handleException(InvalidInputException exception) {
+    @ExceptionHandler(value = {NegativePerimeterException.class})
+    public ResponseEntity<String> handleException(NegativePerimeterException exception) {
         log.error(exception.getMessage());
         return new ResponseEntity<>(exception.getMessage(), HttpStatus.NOT_FOUND);
     }

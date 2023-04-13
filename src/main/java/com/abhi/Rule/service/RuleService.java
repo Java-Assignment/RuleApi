@@ -1,12 +1,12 @@
 package com.abhi.Rule.service;
 
-import com.abhi.Rule.dto.FileDTO;
-import com.abhi.Rule.exception.InvalidInputException;
+import com.abhi.Rule.dto.DataDTO;
 import com.abhi.Rule.exception.NegativeNumberException;
+import com.abhi.Rule.exception.NegativePerimeterException;
 
 public interface RuleService {
 
-    FileDTO CheckForPositivity(String fileNumber) throws NegativeNumberException;
+    DataDTO CheckForPositivityOfFileNumber(String fileNumber) throws NegativeNumberException;
 
-    FileDTO CheckForLetters(String fileNumber) throws InvalidInputException;
+    DataDTO CheckForPositivityOfPerimeter(String fileNumber) throws NegativePerimeterException;
 }

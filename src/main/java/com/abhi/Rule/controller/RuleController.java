@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Validated
 @Tag(name = "Rule Api", description = "The app contains rules for the files")
 public interface RuleController {
-    @GetMapping(value = {"/ruleOne/{fileNumber}"})
+    @GetMapping(value = "/ruleOne/{fileNumber}")
     @Operation(summary = "rule one check")
     ResponseEntity<DataDTO> RuleOne(@PathVariable String fileNumber) throws NegativeNumberException;
 
